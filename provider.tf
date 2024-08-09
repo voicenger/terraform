@@ -4,6 +4,14 @@ terraform {
       source  = "hashicorp/aws"
       version = "5.61.0"
     }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.0" # Adjust the version as needed
+    }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "~> 4.0" # Adjust the version as needed
+    }
   }
   backend "s3" {
     bucket         = "aws-terraform-c9c98e64-state-voicenger"
