@@ -82,9 +82,9 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
       },
       {
         Action = [
-          "kms:DescribeKey",    # Permission to describe KMS keys
-          "kms:Decrypt",        # Permission to decrypt using KMS
-          "kms:Encrypt",        # Permission to encrypt using KMS
+          "kms:DescribeKey",     # Permission to describe KMS keys
+          "kms:Decrypt",         # Permission to decrypt using KMS
+          "kms:Encrypt",         # Permission to encrypt using KMS
           "kms:GenerateDataKey", # Permission to generate data keys
           "kms:GetKeyPolicy"
         ]
