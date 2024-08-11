@@ -5,11 +5,11 @@ resource "tls_private_key" "example" {
   rsa_bits  = 2048
 }
 
-resource "local_file" "private_key" {
-  content         = tls_private_key.example.private_key_pem
-  filename        = "${path.module}/my-key.pem"
-  file_permission = "0400" # Read-only permission for owner
-}
+# resource "local_file" "private_key" {
+#   content         = tls_private_key.example.private_key_pem
+#   filename        = "${path.module}/my-key.pem"
+#   file_permission = "0400" # Read-only permission for owner
+# }
 
 resource "aws_key_pair" "deployer_key" {
   key_name   = "deployer-key"
@@ -105,7 +105,3 @@ resource "aws_eip" "elastic_ip" {
 output "public_ip" {
   value = aws_eip.elastic_ip.public_ip
 }
-
-# output "private_key_path" {
-#   value = local_file.private_key.filename
-# }
