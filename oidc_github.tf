@@ -88,7 +88,8 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
           "kms:GenerateDataKey", # Permission to generate data keys
           "kms:GetKeyPolicy",
           "kms:GetKeyRotationStatus",
-          "kms:ListResourceTags"
+          "kms:ListResourceTags",
+          "kms:ListAliases"
         ]
         Effect   = "Allow"
         Resource = "*" # Replace with your actual KMS key ARN if different
