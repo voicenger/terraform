@@ -49,6 +49,20 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
         Effect   = "Allow"
         Resource = "*"
       },
+      {
+        Action = [
+          "s3:*"  # Add full S3 access
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+      {
+        Action = [
+          "dynamodb:*"  # Add full DynamoDB access
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      }
     ]
   })
 }
