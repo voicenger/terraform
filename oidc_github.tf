@@ -87,7 +87,8 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
           "kms:Encrypt",         # Permission to encrypt using KMS
           "kms:GenerateDataKey", # Permission to generate data keys
           "kms:GetKeyPolicy",
-          "kms:GetKeyRotationStatus"
+          "kms:GetKeyRotationStatus",
+          "kms:ListResourceTags"
         ]
         Effect   = "Allow"
         Resource = "*" # Replace with your actual KMS key ARN if different
