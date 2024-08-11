@@ -93,7 +93,7 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
       },
       {
         Action = [
-          "iam:GetRole", # Permission to get IAM roles
+          "iam:*",       # Permission to get IAM roles
           "iam:PassRole" # Permission to pass IAM roles
         ]
         Effect   = "Allow"
