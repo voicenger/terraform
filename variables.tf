@@ -8,3 +8,9 @@ variable "aws_region" {
   description = "AWS Region for AWS"
   default     = "eu-central-1"
 }
+
+variable "github_actions_repo" {
+  description = "github_actions_repo"
+  type        = string
+  default     = "repo:voicenger/terraform:*"
+}
