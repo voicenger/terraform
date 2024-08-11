@@ -51,14 +51,31 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
       },
       {
         Action = [
-          "s3:*"  # Add full S3 access
+          "s3:*"  # Full S3 access
         ]
         Effect   = "Allow"
         Resource = "*"
       },
       {
         Action = [
-          "dynamodb:*"  # Add full DynamoDB access
+          "dynamodb:*"  # Full DynamoDB access
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+      {
+        Action = [
+          "ec2:*"  # Full EC2 access
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+      {
+        Action = [
+          "ssm:*",  # Full SSM access
+          "ssm:GetParameter",  # Specifically for SSM Parameter Store access
+          "ssm:PutParameter",
+          "ssm:DeleteParameter"
         ]
         Effect   = "Allow"
         Resource = "*"
