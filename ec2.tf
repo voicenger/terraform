@@ -105,17 +105,3 @@ resource "aws_eip" "elastic_ip" {
 output "public_ip" {
   value = aws_eip.elastic_ip.public_ip
 }
-
-# output "private_key_path" {
-#   value = local_file.private_key.filename
-# }
-
-
-resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-test-bucket"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
