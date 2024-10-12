@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readiness-liveness-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readiness-liveness-app
+  template:
+    metadata:
+      labels:
+        app: readiness-liveness-app
+    spec:
+      containers:
+      - name: app
+        image: serbenyuk/readiness-liveness-app:v0.7
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "64Mi"  # Минимально требуемая память
+            cpu: "250m"     # Минимально требуемый CPU
+          limits:
+            memory: "128Mi" # Максимально допустимая память
+            cpu: "500m"     # Максимально допустимый CPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: readiness-liveness-service
+spec:
+  selector:
+    app: readiness-liveness-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
